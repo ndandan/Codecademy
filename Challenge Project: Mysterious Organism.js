@@ -32,13 +32,16 @@ const mockUpStrand = () => {
         if(this.dna[x]===pAequor.dna[x]){
           counter++;
         }
-        return `specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${(counter / 15)*100}% DNA in common`
       }
+      return `specimen #${this.specimenNum} and specimen #${pAequor.specimenNum} have ${(counter / 15)*100}% DNA in common`
     },
     willLikelySurvive(){
       let matched = this.dna.filter((z) => z === 'C' || z === 'G');
       console.log(matched.length);
       return (matched.length/this.dna.length) >=0.60 ? true : false;
+      },
+      complementStrand(){
+        
       }
     }
   };
@@ -50,11 +53,12 @@ const mockUpStrand = () => {
 
 let samples = [];
 
-const collectSamples = () => {
-  for(let d = 0; d < 31; d++){
-    samples.push(pAequorFactory(x+1, mockUpStrand()))
+const cSamples = () => {
+  for(let d = 0; d < 30; d++){
+    samples.push(pAequorFactory((d+1), mockUpStrand()));
   }
 }
 
+cSamples();
 
-
+console.log(samples);
